@@ -1,7 +1,5 @@
-# Restaurant-Java-Maven-Spring-Boot
+# Application Gestionnaire de Restaurant | Restaurant Manager APP
 Ce projet était fait dans le cadre d'un TP pour le module Java Maven Spring Boot pendant mon M2. (By Ghassen.BH 2022 ©)
-===============================================================
-Application Gestionnaire de Restaurant | Restaurant Manager APP 
 ===============================================================
 #### Implementation Stack:
 
