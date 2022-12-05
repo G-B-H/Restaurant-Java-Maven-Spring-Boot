@@ -1,0 +1,3807 @@
+{
+	"info": {
+		"_postman_id": "689315ac-4aa5-418d-ad64-b7ca05709512",
+		"name": "choose-restaurant",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Exception",
+					"item": [
+						{
+							"name": "http://localhost:8080/api/users 409 Conflict",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "0225908b-9295-403d-b58d-af411b7d03fc",
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 409\", function () {",
+											"    pm.response.to.have.status(409);",
+											"});",
+											"",
+											"pm.test(\"Status code name has string\", function () {",
+											"    pm.response.to.have.status(\"Conflict\");",
+											"});",
+											"",
+											"",
+											"pm.test(\"Your test name\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.message).to.eql(\"Validation error, User with this email already exists\");",
+											"});",
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "admin@gmail.com",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "admin",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Basic YWRtaW5AZ21haWwuY29tOmFkbWlu"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"New user\",\n  \"email\": \"user@gmail.com\",\n  \"password\": \"password\",\n  \"roles\": [\n      \"ROLE_USER\"\n  ]\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"users"
+									]
+								},
+								"description": "create User"
+							},
+							"response": []
+						},
+						{
+							"name": "http://localhost:8080/api/users/222 404 NotFount",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "bb2420f6-1071-4dca-926e-c781f8739189",
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {",
+											"    pm.response.to.have.status(404);",
+											"});",
+											"",
+											"pm.test(\"Status code name has string\", function () {",
+											"    pm.response.to.have.status(\"Not Found\");",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "admin@gmail.com",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "admin",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Basic YWRtaW5AZ21haWwuY29tOmFkbWlu"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8080/api/users/222",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"users",
+										"222"
+									]
+								},
+								"description": "404 Not Found"
+							},
+							"response": []
+						},
+						{
+							"name": "http://localhost:8080/api/user 404 NotFound",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "8437a922-b1ee-4c3f-b8f9-955e7656555b",
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {",
+											"    pm.response.to.have.status(404);",
+											"});",
+											"",
+											"pm.test(\"Status code name has string\", function () {",
+											"    pm.response.to.have.status(\"Not Found\");",
+											"});",
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "admin@gmail.com",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "admin",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Basic YWRtaW5AZ21haWwuY29tOmFkbWlu"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8080/api/user",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"user"
+									]
+								},
+								"description": "404 Not Found"
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "http://localhost:8080/api/users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "71daab78-297a-482a-82ce-db11d14465a5",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", function () {",
+									"    pm.response.to.have.status(\"OK\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "admin@gmail.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW5AZ21haWwuY29tOmFkbWlu"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users"
+							]
+						},
+						"description": "getAllUsers"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/api/users/1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "70ba35bd-b4d9-45c9-93c6-87610284edac",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", function () {",
+									"    pm.response.to.have.status(\"OK\");",
+									"});",
+									"",
+									"pm.test(\"Your test name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.name).to.eql(\"Admin\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "admin@gmail.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW5AZ21haWwuY29tOmFkbWlu"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/users/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"1"
+							]
+						},
+						"description": "getUsers"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/api/users/search/by-email?email=user@gmail.com",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "49246c73-96b7-426e-9ff2-ecd419147b4e",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", function () {",
+									"    pm.response.to.have.status(\"OK\");",
+									"});",
+									"",
+									"pm.test(\"Your test name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.email).to.eql(\"user@gmail.com\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "admin@gmail.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW5AZ21haWwuY29tOmFkbWlu"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/users/search/by-email?email=user@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"search",
+								"by-email"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "user@gmail.com"
+								}
+							]
+						},
+						"description": "getUsersByEmail"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/api/users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7c2e133e-c3a6-4af9-9b55-47f91639e04d",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", function () {",
+									"    pm.response.to.have.status(\"Created\");",
+									"});",
+									"",
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+									"});",
+									"",
+									"pm.test(\"Your test name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.name).to.eql(\"New user\");",
+									"});",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "admin@gmail.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW5AZ21haWwuY29tOmFkbWlu"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"New user\",\n  \"email\": \"user@mail.ru\",\n  \"password\": \"password\",\n  \"roles\": [\n      \"ROLE_USER\"\n  ]\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users"
+							]
+						},
+						"description": "create User"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/api/users/2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "994faab4-7247-4d15-a137-b35dad2c57c2",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", function () {",
+									"    pm.response.to.have.status(\"OK\");",
+									"});",
+									"",
+									"pm.test(\"Your test name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.name).to.eql(\"User update\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "admin@gmail.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW5AZ21haWwuY29tOmFkbWlu"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"User update\",\n  \"email\": \"user@test.tt\",\n  \"password\": \"user\",\n  \"roles\": [\"ROLE_USER\"]\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"2"
+							]
+						},
+						"description": "Update User"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/api/users/2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4a5a6e31-1fed-484e-8ee0-8a05afb9f908",
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {",
+									"    pm.response.to.have.status(204);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", function () {",
+									"    pm.response.to.have.status(\"No Content\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "admin@gmail.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW5AZ21haWwuY29tOmFkbWlu"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"2"
+							]
+						},
+						"description": "Delete User"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Restaurant",
+			"item": [
+				{
+					"name": "Exception",
+					"item": [
+						{
+							"name": "http://localhost:8080/api/restaurants 409 Conflict",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "9ac994ea-d05d-433a-b7f6-edab9543b1ec",
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 409\", function () {",
+											"    pm.response.to.have.status(409);",
+											"});",
+											"",
+											"pm.test(\"Status code name has string\", function () {",
+											"    pm.response.to.have.status(\"Conflict\");",
+											"});",
+											"",
+											"pm.test(\"Your test name\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.message).to.eql(\"Validation error, Restaurant with this name already exist\");",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "admin@gmail.com",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "admin",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Basic YWRtaW5AZ21haWwuY29tOmFkbWlu"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\":\"McDonalds\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/restaurants",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"restaurants"
+									]
+								},
+								"description": "Create restaurant"
+							},
+							"response": []
+						},
+						{
+							"name": "http://localhost:8080/api/restaurants 403 Forbidden",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a5f1ee69-15b2-47d2-8686-0d1cc8cf1cea",
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 403\", function () {",
+											"    pm.response.to.have.status(403);",
+											"});",
+											"",
+											"pm.test(\"Status code name has string\", function () {",
+											"    pm.response.to.have.status(\"Forbidden\");",
+											"});",
+											"",
+											"pm.test(\"Your test name\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.message).to.eql(\"Access denied\");",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "user",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "user@gmail.com",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Basic YWRtaW5AZ21haWwuY29tOmFkbWlu"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\":\"McDonalds\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/restaurants",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"restaurants"
+									]
+								},
+								"description": "Create restaurant"
+							},
+							"response": []
+						},
+						{
+							"name": "http://localhost:8080/api/restaurants/0 409 Conflict",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "83be0fee-c632-412d-80fb-d409dd12ffb3",
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 409\", function () {",
+											"    pm.response.to.have.status(409);",
+											"});",
+											"",
+											"pm.test(\"Status code name has string\", function () {",
+											"    pm.response.to.have.status(\"Conflict\");",
+											"});",
+											"",
+											"pm.test(\"Your test name\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.message).to.eql(\"Validation error, Restaurant with this name already exist\");",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "admin@gmail.com",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "admin",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Basic YWRtaW5AZ21haWwuY29tOmFkbWlu"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"KFC\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/restaurants/0",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"restaurants",
+										"0"
+									]
+								},
+								"description": "Update restaurant"
+							},
+							"response": []
+						},
+						{
+							"name": "http://localhost:8080/api/restaurants/0 403 Forbidden",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "6a912240-82e6-4de5-ada8-71c3b36d453d",
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 403\", function () {",
+											"    pm.response.to.have.status(403);",
+											"});",
+											"",
+											"pm.test(\"Status code name has string\", function () {",
+											"    pm.response.to.have.status(\"Forbidden\");",
+											"});",
+											"",
+											"pm.test(\"Your test name\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.message).to.eql(\"Access denied\");",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "user",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "user@gmail.com ",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Basic YWRtaW5AZ21haWwuY29tOmFkbWlu"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"SubWay\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/restaurants/0",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"restaurants",
+										"0"
+									]
+								},
+								"description": "Update restaurant"
+							},
+							"response": []
+						},
+						{
+							"name": "http://localhost:8080/api/restaurants/0 403 Forbidden",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "9158a707-753a-4d2a-b057-e9cc8df1e0e2",
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 403\", function () {",
+											"    pm.response.to.have.status(403);",
+											"});",
+											"",
+											"pm.test(\"Status code name has string\", function () {",
+											"    pm.response.to.have.status(\"Forbidden\");",
+											"});",
+											"",
+											"pm.test(\"Your test name\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.message).to.eql(\"Access denied\");",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "user",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "user@gmail.com",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Basic YWRtaW5AZ21haWwuY29tOmFkbWlu"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/restaurants/0",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"restaurants",
+										"0"
+									]
+								},
+								"description": "Delete restaurant"
+							},
+							"response": []
+						},
+						{
+							"name": "http://localhost:8080/api/restaurants/222 404 not found",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "da2bc052-0467-44e1-bd19-bf092dc8e71f",
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {",
+											"    pm.response.to.have.status(404);",
+											"});",
+											"",
+											"pm.test(\"Status code name has string\", function () {",
+											"    pm.response.to.have.status(\"Not Found\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "admin@gmail.com",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "admin",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Basic YWRtaW5AZ21haWwuY29tOmFkbWlu"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8080/api/restaurants/222",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"restaurants",
+										"222"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "53f4bffd-9a54-440c-af8f-f5db9a31dceb",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "6ab71402-fbd2-478e-8fa7-27f72bc01448",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "http://localhost:8080/api/restaurants",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8447bd32-8f3c-4e45-a05f-6ce57d27c14d",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", function () {",
+									"    pm.response.to.have.status(\"OK\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "admin@gmail.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW5AZ21haWwuY29tOmFkbWlu"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/restaurants",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"restaurants"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/api/restaurants/1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "da2bc052-0467-44e1-bd19-bf092dc8e71f",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", function () {",
+									"    pm.response.to.have.status(\"OK\");",
+									"});",
+									"",
+									"pm.test(\"Your test name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.name).to.eql(\"Burger King\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "admin@gmail.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW5AZ21haWwuY29tOmFkbWlu"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/restaurants/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"restaurants",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/api/restaurants/1/lunch",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "da2bc052-0467-44e1-bd19-bf092dc8e71f",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", function () {",
+									"    pm.response.to.have.status(\"OK\");",
+									"});",
+									"",
+									"pm.test(\"Your test name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.name).to.eql(\"Burger King\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "admin@gmail.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW5AZ21haWwuY29tOmFkbWlu"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/restaurants/1/lunch",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"restaurants",
+								"1",
+								"lunch"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/api/restaurants/search/by-name?name=KFC",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "76d53542-edaa-4736-aeff-d99cc08fd09d",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", function () {",
+									"    pm.response.to.have.status(\"OK\");",
+									"});",
+									"",
+									"pm.test(\"Your test name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.name).to.eql(\"KFC\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "admin@gmail.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW5AZ21haWwuY29tOmFkbWlu"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/restaurants/search/by-name?name=KFC",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"restaurants",
+								"search",
+								"by-name"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "KFC"
+								}
+							]
+						},
+						"description": "Restaurant findByName"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/api/restaurants",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "59f06386-8e73-4964-929b-b681b82b02a6",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", function () {",
+									"    pm.response.to.have.status(\"Created\");",
+									"});",
+									"",
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+									"});",
+									"",
+									"pm.test(\"Your test name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.name).to.eql(\"Чайкофф\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "admin@gmail.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW5AZ21haWwuY29tOmFkbWlu"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\":\"Чайкофф\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/restaurants",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"restaurants"
+							]
+						},
+						"description": "Create restaurant"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/api/restaurants/3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f1bb08b3-56fd-4191-8375-41e923c1adb9",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", function () {",
+									"    pm.response.to.have.status(\"OK\");",
+									"});",
+									"",
+									"pm.test(\"Your test name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.name).to.eql(\"SubWay\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "admin@gmail.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW5AZ21haWwuY29tOmFkbWlu"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"SubWay\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/restaurants/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"restaurants",
+								"3"
+							]
+						},
+						"description": "Update restaurant"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/api/restaurants/3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cfda7805-6ca5-4864-b24a-6cd0c7feb219",
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {",
+									"    pm.response.to.have.status(204);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", function () {",
+									"    pm.response.to.have.status(\"No Content\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "admin@gmail.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW5AZ21haWwuY29tOmFkbWlu"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/restaurants/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"restaurants",
+								"3"
+							]
+						},
+						"description": "Delete restaurant"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authorized",
+			"item": [
+				{
+					"name": "http://localhost:8080/api 200",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1dc73bd7-0559-4151-8aa7-30a7ec672424",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Your test name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData._links.profile.href).to.eql(\"http://localhost:8080/api/profile\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "admin@gmail.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW5AZ21haWwuY29tOmFkbWlu"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api"
+							]
+						},
+						"description": "admin Authorized"
+					},
+					"response": [
+						{
+							"name": "http://localhost:8080/api",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Basic YWRtaW5AZ21haWwuY29tOmFkbWlu"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8080/api",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "cache-control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate",
+									"name": "cache-control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "content-type",
+									"value": "application/hal+json;charset=UTF-8",
+									"name": "content-type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "date",
+									"value": "Mon, 05 Dec 2022 23:15:40 GMT",
+									"name": "date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "expires",
+									"value": "0",
+									"name": "expires",
+									"description": "Gives the date/time after which the response is considered stale"
+								},
+								{
+									"key": "pragma",
+									"value": "no-cache",
+									"name": "pragma",
+									"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+								},
+								{
+									"key": "transfer-encoding",
+									"value": "chunked",
+									"name": "transfer-encoding",
+									"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff",
+									"name": "x-content-type-options",
+									"description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "1; mode=block",
+									"name": "x-xss-protection",
+									"description": "Cross-site scripting (XSS) filter"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n  \"_links\" : {\r\n    \"dishes\" : {\r\n      \"href\" : \"http://localhost:8080/api/dishes{?page,size,sort}\",\r\n      \"templated\" : true\r\n    },\r\n    \"restaurant\" : {\r\n      \"href\" : \"http://localhost:8080/api/restaurants{?page,size,sort}\",\r\n      \"templated\" : true\r\n    },\r\n    \"user\" : {\r\n      \"href\" : \"http://localhost:8080/api/users{?page,size,sort}\",\r\n      \"templated\" : true\r\n    },\r\n    \"menu\" : {\r\n      \"href\" : \"http://localhost:8080/api/menu{?page,size,sort}\",\r\n      \"templated\" : true\r\n    },\r\n    \"profile\" : {\r\n      \"href\" : \"http://localhost:8080/api/profile\"\r\n    }\r\n  }\r\n}"
+						}
+					]
+				},
+				{
+					"name": "http://localhost:8080/api 200",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "26865f85-5c18-4f54-bce5-d68b2b01c785",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "user@gmail.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "user",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic dXNlckB5YW5kZXgucnU6dXNlcg=="
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api"
+							]
+						},
+						"description": "user Authorized"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/api 401 Unauthorized",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bf13004e-1137-46bd-bc51-cb2c479fba81",
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "admin@gmail.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "admininistrator",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api"
+							]
+						},
+						"description": "Unauthorized"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/api/users 403 Forbidden",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d99716f3-ca95-43c6-af72-a03339e97aff",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {",
+									"    pm.response.to.have.status(403);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "user",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user@gmail.com",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW5AZ21haWwuY29tOmFkbWluaW5pc3RyYXRvcg=="
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users"
+							]
+						},
+						"description": "Unauthorized"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Lunch",
+			"item": [
+				{
+					"name": "Exception",
+					"item": [
+						{
+							"name": "http://localhost:8080/api/linch 409 Conflict",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "66b4cfa2-c92b-4ad1-9baf-b6aec9973bfc",
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 409\", function () {",
+											"    pm.response.to.have.status(409);",
+											"});",
+											"",
+											"pm.test(\"Status code name has string\", function () {",
+											"    pm.response.to.have.status(\"Conflict\");",
+											"});",
+											"",
+											"pm.test(\"Your test name\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.message).to.eql(\"Validation error\");",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "admin@gmail.com",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "admin",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Basic YWRtaW5AZ21haWwuY29tOmFkbWlu"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"date\": \"2022-12-05\",\n  \"name\": \"New Lunch\",\n  \"price\": 200\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/lunch",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"lunch"
+									]
+								},
+								"description": "create menu"
+							},
+							"response": []
+						},
+						{
+							"name": "http://localhost:8080/api/linch 409 Conflict",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "c84b2a9d-1e68-4f71-8377-7669fa65c544",
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 409\", function () {",
+											"    pm.response.to.have.status(409);",
+											"});",
+											"",
+											"pm.test(\"Status code name has string\", function () {",
+											"    pm.response.to.have.status(\"Conflict\");",
+											"});",
+											"",
+											"pm.test(\"Your test name\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.message).to.eql(\"Validation error, In the selected restaurant a lunch with this name already exists\");",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "admin@gmail.com",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "admin",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Basic YWRtaW5AZ21haWwuY29tOmFkbWlu"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"date\": \"2022-12-05\",\n  \"restaurant\": \"http://localhost:8080/api/restaurants/0\",\n  \"name\": \"Kebab\",\n  \"price\": 200\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/lunch",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"lunch"
+									]
+								},
+								"description": "create menu"
+							},
+							"response": []
+						},
+						{
+							"name": "http://localhost:8080/api/linch 403 Forbidden",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "2a6fd868-97e3-4e5f-8a3f-de65bdc5653a",
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 403\", function () {",
+											"    pm.response.to.have.status(403);",
+											"});",
+											"",
+											"pm.test(\"Status code name has string\", function () {",
+											"    pm.response.to.have.status(\"Forbidden\");",
+											"});",
+											"",
+											"pm.test(\"Your test name\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.message).to.eql(\"Access denied\");",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "user",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "user@gmail.com",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Basic YWRtaW5AZ21haWwuY29tOmFkbWlu"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"date\": \"2022-12-05\",\n  \"restaurant\": \"http://localhost:8080/api/restaurants/0\",\n  \"name\": \"Kebab\",\n  \"price\": 200\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/lunch",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"lunch"
+									]
+								},
+								"description": "create menu"
+							},
+							"response": []
+						},
+						{
+							"name": "http://localhost:8080/api/lunch/0 409 Conflict",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "1d435ded-70b6-4ede-87e7-8f0e35a44cf5",
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 409\", function () {",
+											"    pm.response.to.have.status(409);",
+											"});",
+											"",
+											"pm.test(\"Status code name has string\", function () {",
+											"    pm.response.to.have.status(\"Conflict\");",
+											"});",
+											"",
+											"pm.test(\"Your test name\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.message).to.eql(\"Validation error\");",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "admin@gmail.com",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "admin",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Basic YWRtaW5AZ21haWwuY29tOmFkbWlu"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"restaurant\": \"http://localhost:8080/api/restaurants/3\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/lunch/0",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"lunch",
+										"0"
+									]
+								},
+								"description": "update menu"
+							},
+							"response": []
+						},
+						{
+							"name": "http://localhost:8080/api/lunch/0 409 Conflict",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "798dc4da-fa42-44e7-bc7a-41477de82c84",
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 409\", function () {",
+											"    pm.response.to.have.status(409);",
+											"});",
+											"",
+											"pm.test(\"Status code name has string\", function () {",
+											"    pm.response.to.have.status(\"Conflict\");",
+											"});",
+											"",
+											"pm.test(\"Your test name\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.message).to.eql(\"Validation error\");",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "admin@gmail.com",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "admin",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Basic YWRtaW5AZ21haWwuY29tOmFkbWlu"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"date\":\"2022-12-05\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/lunch/0",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"lunch",
+										"0"
+									]
+								},
+								"description": "update menu"
+							},
+							"response": []
+						},
+						{
+							"name": "http://localhost:8080/api/lunch/0 403 Forbidden",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "6d3e9c12-6132-47e8-9c24-51f28c16df74",
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 403\", function () {",
+											"    pm.response.to.have.status(403);",
+											"});",
+											"",
+											"pm.test(\"Status code name has string\", function () {",
+											"    pm.response.to.have.status(\"Forbidden\");",
+											"});",
+											"",
+											"pm.test(\"Your test name\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.message).to.eql(\"Access denied\");",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "user",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "user@gmail.com",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Basic YWRtaW5AZ21haWwuY29tOmFkbWlu"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"date\":\"2022-12-05\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/lunch/0",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"lunch",
+										"0"
+									]
+								},
+								"description": "update menu"
+							},
+							"response": []
+						},
+						{
+							"name": "http://localhost:8080/api/lunch/5 403 Forbidden",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "2f12a185-2807-43a9-b8f1-609c0cddbbbc",
+										"type": "text/javascript",
+										"exec": [
+											"pm.test(\"Status code is 403\", function () {",
+											"    pm.response.to.have.status(403);",
+											"});",
+											"",
+											"pm.test(\"Status code name has string\", function () {",
+											"    pm.response.to.have.status(\"Forbidden\");",
+											"});",
+											"",
+											"pm.test(\"Your test name\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.message).to.eql(\"Access denied\");",
+											"});"
+										]
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "user",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "user@gmail.com",
+											"type": "string"
+										},
+										{
+											"key": "saveHelperData",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Basic YWRtaW5AZ21haWwuY29tOmFkbWlu"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"date\": \"2022-12-05\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/lunch/0",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"lunch",
+										"0"
+									]
+								},
+								"description": "delete menu"
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "http://localhost:8080/api/lunch",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ae766f1b-e576-4c4e-ab4e-46c0f630c1c3",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", function () {",
+									"    pm.response.to.have.status(\"OK\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "admin@gmail.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW5AZ21haWwuY29tOmFkbWlu"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/lunch",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"lunch"
+							]
+						},
+						"description": "getAllMenu"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/api/lunch/0",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "764fbb54-7887-4e91-8ee7-4947e6f8b008",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", function () {",
+									"    pm.response.to.have.status(\"OK\");",
+									"});",
+									"",
+									"pm.test(\"Your test name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.date).to.eql(\"2022-12-05\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "admin@gmail.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW5AZ21haWwuY29tOmFkbWlu"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/lunch/0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"lunch",
+								"0"
+							]
+						},
+						"description": "getMenu"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/api/lunch/0/restaurant",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ba9fb2be-268e-4c3e-99dc-958fb32224d3",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", function () {",
+									"    pm.response.to.have.status(\"OK\");",
+									"});",
+									"",
+									"pm.test(\"Your test name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.name).to.eql(\"McDonalds\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "admin@gmail.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW5AZ21haWwuY29tOmFkbWlu"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/lunch/0/restaurant",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"lunch",
+								"0",
+								"restaurant"
+							]
+						},
+						"description": "getMenu Restaurant"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/api/lunch/search/by-date?date=2022-12-05",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "01b044bb-183f-470e-8a63-bb5ff74818a4",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", function () {",
+									"    pm.response.to.have.status(\"OK\");",
+									"});",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "admin@gmail.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW5AZ21haWwuY29tOmFkbWlu"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/lunch/search/by-date?date=2022-12-05",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"lunch",
+								"search",
+								"by-date"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2022-12-05"
+								}
+							]
+						},
+						"description": "getMenu byDate"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/api/lunch/search/by-restaurant?restaurant=http://localhost:8080/api/restaurant/0",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "08dbcb58-fe72-469a-98e9-01eefff134ec",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", function () {",
+									"    pm.response.to.have.status(\"OK\");",
+									"});",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "admin@gmail.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW5AZ21haWwuY29tOmFkbWlu"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/lunch/search/by-restaurant?restaurant=http://localhost:8080/api/restaurant/0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"lunch",
+								"search",
+								"by-restaurant"
+							],
+							"query": [
+								{
+									"key": "restaurant",
+									"value": "http://localhost:8080/api/restaurant/0"
+								}
+							]
+						},
+						"description": "getAllMenu byRestaurant"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/api/lunch/search/by-restaurant-and-date",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "08dbcb58-fe72-469a-98e9-01eefff134ec",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", function () {",
+									"    pm.response.to.have.status(\"OK\");",
+									"});",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "admin@gmail.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW5AZ21haWwuY29tOmFkbWlu"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/lunch/search/by-restaurant-and-date?restaurant=http://localhost:8080/api/restaurant/0&date=2022-12-05",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"lunch",
+								"search",
+								"by-restaurant-and-date"
+							],
+							"query": [
+								{
+									"key": "restaurant",
+									"value": "http://localhost:8080/api/restaurant/0"
+								},
+								{
+									"key": "date",
+									"value": "2022-12-05"
+								}
+							]
+						},
+						"description": "getAllMenu byRestaurant"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/api/linch",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7054597d-5716-4c00-b557-b5e971f4e752",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", function () {",
+									"    pm.response.to.have.status(\"Created\");",
+									"});",
+									"",
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+									"});",
+									"",
+									"pm.test(\"Your test name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.date).to.eql(\"2022-12-05\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "admin@gmail.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW5AZ21haWwuY29tOmFkbWlu"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"date\": \"2022-12-05\",\n  \"restaurant\": \"http://localhost:8080/api/restaurants/0\",\n  \"name\": \"New Lunch\",\n  \"price\": 200\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/lunch",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"lunch"
+							]
+						},
+						"description": "create menu"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/api/lunch/0",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "eeb0a51a-bb09-43d2-b548-66d5dbcec7e5",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", function () {",
+									"    pm.response.to.have.status(\"OK\");",
+									"});",
+									"",
+									"pm.test(\"Your test name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.name).to.eql(\"Put lunch\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "admin@gmail.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW5AZ21haWwuY29tOmFkbWlu"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"date\": \"2022-12-05\",\n  \"restaurant\": \"http://localhost:8080/api/restaurants/1\",\n  \"name\": \"Put lunch\", \n  \"price\" : 300\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/lunch/0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"lunch",
+								"0"
+							]
+						},
+						"description": "update menu"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/api/lunch/0",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "babdc622-ed31-4a08-88d4-eacc1d767804",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", function () {",
+									"    pm.response.to.have.status(\"OK\");",
+									"});",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "admin@gmail.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW5AZ21haWwuY29tOmFkbWlu"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"restaurant\": \"http://localhost:8080/restaurants/1\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/lunch/0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"lunch",
+								"0"
+							]
+						},
+						"description": "update menu"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/api/lunch/5",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "934b0108-d1a4-4e22-8d70-4a53d3a2cddc",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {",
+									"    pm.response.to.have.status(204);",
+									"});",
+									"",
+									"pm.test(\"Status code name has string\", function () {",
+									"    pm.response.to.have.status(\"No Content\");",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "admin@gmail.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW5AZ21haWwuY29tOmFkbWlu"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"date\": \"2022-12-05\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/lunch/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"lunch",
+								"5"
+							]
+						},
+						"description": "delete menu"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Choice",
+			"item": [
+				{
+					"name": "http://localhost:8080/api/choice",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5837deed-22ef-4ffc-98e4-ab065e76e005",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200 or 404\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200,404]);",
+									"});",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "user@gmail.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "user",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic dXNlckB5YW5kZXgucnU6dXNlcg=="
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/choice",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"choice"
+							]
+						},
+						"description": "choice current"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/api/choice/0",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "43d24ff1-c977-47cc-ab9f-00d5640c57a5",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201,200]);",
+									"});",
+									"",
+									"pm.test(\"Your test name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.id).to.eql(0);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "user@gmail.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "user",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic dXNlckB5YW5kZXgucnU6dXNlcg=="
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/choice/0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"choice",
+								"0"
+							]
+						},
+						"description": "choice restaurant"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/api/choice/2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "47a092a8-8447-41cd-9e4b-27d96841ce9c",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200,409]);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "user@gmail.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "user",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic dXNlckB5YW5kZXgucnU6dXNlcg=="
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/choice/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"choice",
+								"2"
+							]
+						},
+						"description": "choice restaurant"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
